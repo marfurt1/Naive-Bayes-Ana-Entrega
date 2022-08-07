@@ -5,7 +5,7 @@ import re
 import unicodedata
 import pickle
 import matplotlib.pyplot as plt
-%matplotlib inline
+#%matplotlib inline
 from nltk.corpus import stopwords
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import CountVectorizer
