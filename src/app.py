@@ -99,17 +99,24 @@ def preprocesamiento(datos):
   data=data.apply(remove_stopwords).apply(text_only_letters).apply(replace_multiple_letters)
   return data
 
-traer vectorizer
+#traer vectorizer
+#filename = '../models/vectorizer.pkl'
+#load_model = pickle.load(open(filename, 'rb'))
+
+
+
 
 
 # load the model from data
 filename = '../models/multinomial.pkl'
 load_model = pickle.load(open(filename, 'rb'))
-datos= ['I do not like this app']
 
+datos= ['I do not like this app']
 Z2 = vectorizer.transform(preprocesamiento(datos))
-# Modelo Multinomial loaded
 print(f"Multi: {load_model.predict(Z2.toarray())}")
+
+
+
 
 
 
