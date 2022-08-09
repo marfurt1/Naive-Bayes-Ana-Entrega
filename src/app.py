@@ -94,35 +94,24 @@ def replace_multiple_letters(message):
     result = None
   return result
 
-df_interim = df.copy()
-df_interim['review'] = df_interim['review'].apply(remove_stopwords)
-df_interim['review'] = df_interim['review'].apply(text_only_letters)
-df_interim['review'] = df_interim['review'].apply(replace_multiple_letters)
+def preprocesamiento(datos):
+  data=pd.Series(datos)
+  data=data.apply(remove_stopwords).apply(text_only_letters).apply(replace_multiple_letters)
+  return data
 
-#copy to df
-df = df_interim.copy()
-
-# Separate target and predictor
-X = df['review']
-y = df['polarity']
-
-vectorizer = CountVectorizer(stop_words='english')
-X = vectorizer.fit_transform(X)
-vectorizer.get_feature_names_out()
+traer vectorizer
 
 
 # load the model from data
 filename = '../models/multinomial.pkl'
 load_model = pickle.load(open(filename, 'rb'))
+datos= ['I do not like this app']
 
-Z2 = vectorizer.transform(['I do not like this app'])
+Z2 = vectorizer.transform(preprocesamiento(datos))
 # Modelo Multinomial loaded
 print(f"Multi: {load_model.predict(Z2.toarray())}")
 
-sentiment_pipeline = pipeline("sentiment-analysis")
 
-data = ["I love you", "I hate you"]
-sentiment_pipeline(data)
 
 
 
