@@ -100,11 +100,8 @@ def preprocesamiento(datos):
   return data
 
 #traer vectorizer
-#filename = '../models/vectorizer.pkl'
-#load_model = pickle.load(open(filename, 'rb'))
-
-
-
+filename = '../models/vectorizer.pkl'
+vectorizer = pickle.load(open(filename, 'rb'))
 
 
 # load the model from data
